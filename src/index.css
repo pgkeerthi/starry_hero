@@ -1,0 +1,220 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 252 59% 48%;
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 252 40% 30%;
+    --secondary-foreground: 0 0% 100%;
+ 
+    --muted: 252 10% 90%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 252 40% 90%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 252 30% 80%;
+    --input: 252 30% 80%;
+    --ring: 252 50% 50%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 256 43% 15%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 256 43% 15%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 256 43% 15%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 256 60% 70%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 256 30% 30%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 256 30% 25%;
+    --muted-foreground: 256 20% 80%;
+ 
+    --accent: 256 30% 25%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 256 30% 30%;
+    --input: 256 30% 30%;
+    --ring: 256 60% 70%;
+  }
+
+  /* Admin theme colors */
+  :root {
+    --admin-black: 0 0% 7%;
+    --admin-darkGrey: 0 0% 13%;
+    --admin-grey: 0 0% 20%;
+    --admin-lightGrey: 0 0% 40%;
+    --admin-softGrey: 0 0% 75%;
+    --admin-white: 0 0% 100%;
+    --admin-accent: 0 0% 60%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Fix text color based on background */
+  .bg-white, .bg-gray-100, .bg-gray-200, .bg-admin-white, [class*="bg-slate"], [class*="bg-zinc"], 
+  .bg-background:not(.dark *), .bg-card:not(.dark *), .bg-popover:not(.dark *), 
+  .bg-muted:not(.dark *), .bg-secondary:not(.dark *) {
+    @apply text-black;
+  }
+  
+  .bg-black, .bg-gray-800, .bg-gray-900, .bg-admin-black, .bg-admin-darkGrey, .bg-admin-grey, 
+  .bg-gradient-to-b, .bg-gradient-dark, .dark *, .bg-gray-800\/30, .bg-gray-700\/30, .bg-gray-700\/50, .bg-gray-800\/50,
+  [class*="from-gray-900"], [class*="from-starry"], [class*="bg-starry"], [class*="from-purple"], [class*="from-indigo"],
+  [class*="from-admin-black"], [class*="bg-admin-darkGrey"] {
+    @apply text-white;
+  }
+
+  /* Fix input text specifically */
+  input, textarea, select {
+    @apply text-black;
+  }
+  
+  /* Fix for dark mode inputs */
+  .bg-admin-grey\/10 input,
+  .bg-admin-darkGrey input, 
+  .bg-admin-darkGrey textarea,
+  .bg-admin-darkGrey select,
+  [class*="bg-admin"] input,
+  [class*="bg-admin"] textarea,
+  [class*="bg-admin"] select,
+  .bg-black input,
+  .bg-gray-800 input,
+  .bg-gray-900 input,
+  .bg-gradient-to-b input,
+  .bg-starry-darkPurple input,
+  .dark input,
+  .dark textarea,
+  .dark select,
+  .bg-indigo-900 input,
+  .bg-purple-900 input,
+  [class*="from-purple"] input,
+  [class*="from-indigo"] input {
+    color: white;
+  }
+  
+  /* Fix SelectTrigger text */
+  .text-white .SelectTrigger,
+  [class*="bg-admin"] .SelectTrigger,
+  .bg-black .SelectTrigger,
+  .bg-gray-800 .SelectTrigger,
+  .bg-gray-900 .SelectTrigger,
+  .dark .SelectTrigger {
+    color: white;
+  }
+
+  /* Fix placeholders */
+  [class*="bg-admin"] input::placeholder,
+  .bg-black input::placeholder,
+  .bg-gray-800 input::placeholder,
+  .bg-gray-900 input::placeholder,
+  .dark input::placeholder,
+  .bg-gradient-to-b input::placeholder,
+  .bg-starry-darkPurple input::placeholder,
+  .bg-indigo-900 input::placeholder,
+  .bg-purple-900 input::placeholder,
+  [class*="from-purple"] input::placeholder,
+  [class*="from-indigo"] input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Website name gradient fix */
+  .site-name {
+    @apply font-bold text-2xl;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  
+  .site-name-accent {
+    color: #f97316;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  
+  /* Centered nav links */
+  .centered-nav {
+    @apply flex justify-center items-center space-x-8;
+  }
+}
+
+/* Gradient backgrounds */
+.bg-gradient-starry {
+  background: linear-gradient(to bottom, hsl(256, 43%, 15%) 0%, hsl(256, 43%, 10%) 100%);
+}
+
+.admin-text-gradient {
+  background: linear-gradient(to right, #ffffff 0%, #cccccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero text gradients */
+.hero-text-gradient {
+  background: linear-gradient(to right, #c9b6ff 0%, #9166cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button hover effects */
+.btn-hero-hover {
+  @apply bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300;
+  color: #ffffff;
+}
+
+/* Comic-style elements */
+.comic-border {
+  @apply relative;
+}
+
+.comic-border::before {
+  content: '';
+  @apply absolute -inset-0.5 bg-gradient-to-br from-purple-500 to-indigo-500 opacity-50 rounded-md;
+}
+
+.comic-text {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+/* Comic effects */
+.comic-shadow {
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.comic-box-shadow {
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+}
+
